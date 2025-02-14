@@ -1,0 +1,130 @@
+.giftcontainer {
+  position: relative;
+  --color-gift: #e9c46a; /* Color de la caja */
+  --color-ribbon: #e76f51; /* Color de la cinta */
+  --shadow: "block"; /* Color de la sombra */
+}
+
+.giftcontainer::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  top: 90px;
+  left: -10px;
+}
+
+/* 🎁 Regalo */
+.gift {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  background-color: var(--color-gift);
+}
+
+.gift::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 100px;
+  background-color: var(--color-ribbon); /* Cambia el color de la cinta */
+  left: 62px;
+}
+
+/* Sombra superior */
+.gift::after {
+  content: "";
+  position: absolute;
+  display: var(--shadow);
+  box-shadow: inset 0 10px rgba(0, 0, 0, 0.3);
+  width: 150px;
+  height: 100px;
+}
+
+/* 🎀 Tapa del regalo */
+.click {
+  position: absolute;
+  background-color: var(--color-gift);
+  width: 170px;
+  height: 40px;
+  top: -40px;
+  left: -10px;
+  transform-origin: bottom left;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.click::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 40px;
+  background-color: var(--color-ribbon); /* Cinta en la tapa */
+  left: 72px;
+}
+
+.click::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 0;
+  border-bottom: 30px solid var(--color-ribbon);
+  border-top: 30px solid var(--color-ribbon);
+  border-left: 0px solid transparent;
+  border-right: 30px solid transparent;
+  transform: rotate(-90deg);
+  left: 70px;
+  top: -43px;
+}
+
+/* Animación de apertura */
+.click.opened {
+  transform: rotate(-110deg) scale(0.85);
+}
+
+.wishes.opened {
+  transform: translateY(-80px);
+}
+
+.wishes {
+  position: absolute;
+  transition: .5s;
+  color: #333;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: -1;
+  left: 0px;
+  bottom: -3px;
+  text-shadow: 0 0 10px #020202;
+}
+
+/* Animación de temblor */
+@keyframes shakeVertical {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.img-shake:hover {
+  animation: shakeVertical 0.2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.checkbox{
+  display: none;
+}
